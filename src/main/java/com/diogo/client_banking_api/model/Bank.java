@@ -15,7 +15,7 @@ public class Bank {
     @Id
     private Integer code;
 
-    private String isbp;
+    private String ispb;
     private String name;
     private String fullName;
     
