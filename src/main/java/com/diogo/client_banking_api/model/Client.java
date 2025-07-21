@@ -25,6 +25,6 @@ public class Client {
     private String email;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "bank_account_id")
     private BankAccount bankAccount;
 }
