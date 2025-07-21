@@ -28,5 +28,5 @@ public class BankAccount {
 
     @ManyToOne
     @JoinColumn(name = "bank_code")
-    private Bank bankDetails;
+    private Bank bank;
 }
