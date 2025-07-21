@@ -25,7 +25,4 @@ public class Client {
 
     @OneToOne(cascade = CascadeType.ALL)
     private BankAccount bankAccount;
-
-
-    
 }
