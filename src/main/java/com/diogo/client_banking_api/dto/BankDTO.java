@@ -5,9 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ClientRequestDTO {
-
+public class BankDTO {
+    private Integer code;
+    private String ispb;
     private String name;
-    private String email;
-    private BankAccountRequestDTO bankAccount;
+    private String fullName;
 }

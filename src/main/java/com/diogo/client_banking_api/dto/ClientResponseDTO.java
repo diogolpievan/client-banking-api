@@ -10,6 +10,6 @@ public class ClientResponseDTO {
     private Long id;
     private String name;
     private String email;
-    private BankAccountDTO bankAccount;
+    private BankAccountResponseDTO bankAccount;
 
 }
