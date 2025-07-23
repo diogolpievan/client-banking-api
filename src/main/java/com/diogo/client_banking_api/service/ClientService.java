@@ -6,4 +6,6 @@ import com.diogo.client_banking_api.dto.ClientResponseDTO;
 public interface ClientService {
 
     ClientResponseDTO createClient(ClientRequestDTO request);    
+
+    ClientResponseDTO getClientById(Long id);
 }

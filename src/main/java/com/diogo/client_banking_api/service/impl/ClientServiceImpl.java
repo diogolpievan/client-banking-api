@@ -19,7 +19,7 @@ import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public class ClientServiceImpl implements ClientService{
+public class ClientServiceImpl implements ClientService {
 
     private final ClientRepository clientRepository;
     private final BankAccountService bankAccountService;
@@ -54,11 +54,41 @@ public class ClientServiceImpl implements ClientService{
         bankDTO.setName(bank.getName());
         bankDTO.setFullName(bank.getFullName());
 
-
         bankAccountResponse.setBank(bankDTO);
 
         response.setBankAccount(bankAccountResponse);
 
         return response;
+    }
+
+    @Override
+    public ClientResponseDTO getClientById(Long id) {
+        Client client = clientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Client not found with id " + id));
+
+        ClientResponseDTO dto = new ClientResponseDTO();
+        dto.setId(client.getId());
+        dto.setName(client.getName());
+        dto.setEmail(client.getEmail());
+
+        BankAccount bankAccount = client.getBankAccount();
+        if (bankAccount != null) {
+            BankAccountResponseDTO bankAccountResponse = new BankAccountResponseDTO();
+            bankAccountResponse.setAccountNumber(bankAccount.getAccountNumber());
+            bankAccountResponse.setBranchCode(bankAccount.getBranchCode());
+            bankAccountResponse.setAccountType(bankAccount.getAccountType());
+
+            Bank bank = bankAccount.getBank();
+            if (bank != null) {
+                BankDTO bankDTO = new BankDTO();
+                bankDTO.setCode(bank.getCode());
+                bankDTO.setIspb(bank.getIspb());
+                bankDTO.setName(bank.getName());
+                bankDTO.setFullName(bank.getFullName());
+                bankAccountResponse.setBank(bankDTO);
+            }
+            dto.setBankAccount(bankAccountResponse);
+        }
+        return dto;
     }
 }
