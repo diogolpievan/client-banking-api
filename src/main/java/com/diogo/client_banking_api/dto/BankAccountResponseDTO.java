@@ -1,6 +1,5 @@
 package com.diogo.client_banking_api.dto;
 
-import com.diogo.client_banking_api.model.Bank;
 import com.diogo.client_banking_api.model.enums.TypeOfAccount;
 
 import lombok.Getter;
